@@ -1,0 +1,66 @@
+/* App.css */
+.weather-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    min-height: 100vh;
+    background-color: #131319;
+    color: #fff;
+    padding-top: 50px;
+  }
+  
+  .search-container {
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+  }
+  
+  .weather-details, .forecast-container, .weather-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 10px 0;
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  .weather-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    margin: 10px;
+    padding: 15px;
+    width: 90%;
+    max-width: 220px;
+  }
+  
+  .weather-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .day-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .weather-temperature, .weather-temperature-min {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  .error-message {
+    color: #ff6b6b;
+  }
+  
+  /* Add additional styling as necessary */
+  

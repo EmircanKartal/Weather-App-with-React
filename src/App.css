@@ -1,0 +1,474 @@
+/* Assuming this CSS is in App.css */
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #1e1e30; /* Adjust the color to match the theme */
+  padding: 0px;
+  border-radius: 10px;
+}
+.App {
+  /* Set your desired background color */
+  background-color: #131319; /* This is the dark background color you requested earlier */
+  min-height: 100vh; /* This makes sure your app fills the whole vertical height */
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  padding: 20px;
+}
+
+/* Add more styles for the encapsulating div if necessary */
+.weather-app-container {
+  width: 100%;
+  max-width: 500px; /* Set a max-width for the container if you want to limit its width */
+  margin: 80px; /* This will add automatic margins on both sides, centering the div if the width is less than 100% */
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Optional: adds a subtle shadow for depth */
+  border-radius: 10px; /* Optional: rounds the corners of the div */
+  background: #2e2e488c; /* Set the color of the container div if different from the App background */
+}
+
+.search-input {
+  flex: 1;
+  border-radius: 2px;
+  padding: 10px;
+  color: #fff;
+  background-color: #2e2e48; /* Darker background for the input */
+  border: none;
+}
+
+.search-button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  background-color: #4e4e70; /* Adjust the color for the button */
+  color: white;
+  border-radius: 1px;
+  cursor: pointer;
+  border: none;
+}
+
+.current-weather {
+  background-color: #403b91;
+  color: white;
+  border-radius: 20px;
+  padding: 0px;
+  text-align: left;
+}
+
+.weather-icon img {
+  animation: floating 3s ease-in-out infinite;
+  /* You would define a 'floating' animation for the cloud/sun/rain icon */
+}
+
+.weather-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.forecast {
+  display: flex;
+  overflow-x: auto;
+}
+
+.forecast-container {
+  background: #1E213A;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px; /* Adjust margin as needed */
+  overflow-x: auto; /* Allows scrolling on small screens */
+}
+
+.forecast-day {
+  text-align: center;
+  flex-shrink: 0; /* Prevents the days from shrinking */
+  margin-right: 20px; /* Space between each day */
+}
+
+.forecast-day:last-child {
+  margin-right: 0; /* No margin on the last child */
+}
+
+.forecast-day .day {
+  font-size: 18px; /* Adjust font size as needed */
+  color: #E7E7EB;
+  margin-bottom: 10px;
+}
+
+.forecast-day img {
+  width: 50px; /* Adjust width as needed */
+  margin-bottom: 10px;
+}
+
+.forecast-day .day-temp {
+  font-size: 16px; /* Adjust font size as needed */
+  font-weight: bold;
+  color: #E7E7EB;
+}
+
+.weather-temperature-min {
+  color: #A09FB1; /* Adjust color as needed */
+  font-size: 14px; /* Adjust font size as needed */
+}
+
+/* For smaller screens, consider adjusting the layout */
+@media (max-width: 768px) {
+  .forecast-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .forecast-day {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+.weather-card {
+  background: #1E213A;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.weather-day {
+  text-align: center;
+}
+
+.weather-day img {
+  width: 50px; /* Set according to your preference */
+  margin-bottom: 10px;
+}
+
+.weather-temperature {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.weather-temperature-min {
+  color: #A09FB1;
+  font-size: 16px;
+  padding-top: 5px;
+}
+
+/* For smaller screens, you might want to adjust the styles */
+@media (max-width: 600px) {
+  .weather-card {
+    flex-direction: column;
+  }
+  
+  .weather-day {
+    margin-bottom: 20px;
+  }
+}
+
+/* Add this to your App.css */
+.vertical-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #222233;
+  border-radius: 15px;
+  box-shadow: 4px 2px 19px rgba(255, 255, 255, 0.4);
+  padding: 60px;
+  width: 300px; /* Adjust width as needed */
+  margin: auto;
+  color: white;
+
+}
+
+.weather-card-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.weather-card-body {
+  text-align: center;
+  
+}
+
+.weather-icon img {
+  width: 50px; /* Adjust icon size as needed */
+  height: 50px;
+  margin-bottom: 10px;
+  
+}
+
+.temperature {
+  font-size: 30px; /* Adjust font size as needed */
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.weather-stats {
+  width: 100%;
+}
+
+.weather-stats > div {
+  font-size: 16px; /* Adjust font size as needed */
+  color: white;
+  margin-bottom: 30px;
+}
+
+.search-container {
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.search-top {
+  position: absolute;
+  top: 10px; /* Adjust as needed */
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.current-weather {
+  background: linear-gradient(to bottom right, #6e92a686 rgba(72, 58, 88, 0.558)58); /* Example gradient */
+  color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* For absolute positioning of elements */
+}
+.current-weather::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/src/assets/night.png'); /* Replace with the path to your night image */
+  background-size: cover;
+  opacity: 0.3; /* Adjust for desired opacity level */
+  border-radius: 20px;
+  z-index: 0;
+}
+
+/* Add this to ensure the content of the card is above the background image */
+.current-weather > * {
+  position: relative;
+  z-index: 1;
+}
+.current-weather::after { /* Create the semi-transparent overlay */
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  z-index: 1;
+}
+
+.location {
+  position: relative;
+  z-index: 2;
+  font-size: 24px; /* Adjust as needed */
+  font-weight: bold;
+}
+
+.date {
+  position: relative;
+  z-index: 2;
+  font-size: 18px; /* Adjust as needed */
+  margin: 5px 0 20px; /* Adjust space between date and temperature */
+}
+
+.weather-icon img {
+  width: 100px;
+  height: 100px; /* Adjust size as needed */
+  z-index: 2;
+  /* You can remove the animation if it's not in the design */
+}
+
+.temperature {
+  font-size: 64px; /* Adjust size as needed */
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+}
+
+.min-max-temp {
+  position: relative;
+  z-index: 2;
+  font-size: 20px; /* Adjust as needed */
+  margin-bottom: 5px; /* Adjust as needed */
+}
+
+.description {
+  position: relative;
+  z-index: 2;
+  font-size: 20px; /* Adjust as needed */
+  margin-bottom: 5px; /* Adjust as needed */
+}
+
+.weather-stats {
+  display: none; /* Hide if not part of the design */
+}
+
+/* Add any additional styling for responsive adjustments */
+@media (max-width: 768px) {
+  .current-weather {
+    padding: 15px;
+  }
+  /* Further responsive styling as necessary */
+}
+
+/* Style for weather stats */
+.weather-stat {
+  /* Different style as requested */
+  background-color: rgb(255, 255, 255); /* Semi-transparent white */
+  margin: 1px 0;
+  padding: 20px;
+  border-radius: 0px;
+}
+
+.weather-stat .stat-name {
+  font-weight: bold;
+}
+
+.weather-stat .stat-value {
+  font-size: 1.2em;
+}
+
+/* Add this keyframes for the move-up animation */
+@keyframes move-up {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-100px); /* Adjust this value as needed */
+  }
+  100% {
+    transform: translateY(-80px); /* This is the final position */
+  }
+}
+
+.search-container.moved {
+  /* Apply the animation */
+  animation: move-up 0.7s forwards; 
+}
+
+.search-container.focused {
+  /* Start the move-up animation when the input is focused */
+  animation: move-up 0.7s forwards;
+}
+
+.weather-showcase-card {
+  background-color: #1E213A;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  color: #dbdbe5;
+  margin-bottom: 20px; /* Space between cards */
+  
+}
+
+.weather-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Divider line */
+  padding: 10px 0;
+  background-color: #fff; /* Set the background color for each item */
+
+}
+
+.weather-stat:last-child {
+  border-bottom: none;
+}
+
+.weather-stat-icon {
+  /* Style your icon if necessary */
+  margin-right: 10px;
+}
+
+.weather-stat > span:first-child {
+  display: flex;
+  align-items: center;
+}
+
+.weather-stat span {
+  display: inline-block;
+}
+
+/* Adjust icon sizes if necessary */
+.fa-icon {
+  width: 20px; /* Example width, adjust as necessary */
+  text-align: center;
+}
+
+.weather-details-card {
+  background-color: #1E213A;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px; /* Space between cards */
+}
+
+.weather-forecast-card {
+  background-color: #1E213A;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  color: white;
+  display: flex;
+  overflow-x: auto;
+}
+
+/* Style for individual weather stat in the details card */
+.weather-stat {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weather-stat .stat-name {
+  /* styles for stat name */
+}
+
+.weather-stat .stat-value {
+  /* styles for stat value */
+}
+.search-card {
+  background-color: #222233; /* Adjust background color as needed */
+  border-radius: 15px;
+  padding: 20px;
+  width: 100%; /* Or a fixed width, depending on your layout */
+  max-width: 500px; /* Adjust as needed */
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.5s ease; /* For smooth transition */
+  position: relative; /* Required for absolute positioning inside */
+}
+
+.search-card.moved {
+  animation: move-up 0.7s forwards;
+}
+
+

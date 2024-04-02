@@ -1,0 +1,87 @@
+/* Weather.css */
+
+.weather-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #8894ea; /* Example color */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 6px 8px rgba(32, 32, 32, 0.371); /* Shadow for depth */
+    padding: 40px;
+    margin: 110px auto; /* auto margin for centering horizontally */
+    width: 1500px; /* Example size */
+    height: 300px;
+  }
+  
+  .weather-icon {
+    /* Placeholder styles for the icon */
+    width: 50px; /* Example size */
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .weather-info {
+    text-align: left;
+  }
+  .weather-temperature {
+    font-size: 3em;
+    font-weight: bold;
+  }
+  
+  .weather-location {
+    font-size: 1.2em;
+  }
+  
+  .weather-time {
+    font-size: 1em;
+    color: #666666;
+  }
+  
+  .weather-description {
+    font-size: 1em;
+    color: #888888;
+  }
+  
+  .details-card {
+    /* Small card styles for humidity, UV index, etc. */
+  }
+  
+  .detail {
+    /* Individual detail styles */
+  }
+  
+  .detail-icon {
+    /* Icons for each detail */
+  }
+  
+  .detail-value {
+    /* Values for each detail */
+  }
+  
+  .detail-label {
+    /* Labels for each detail */
+  }
+  
+  .chart-card {
+    /* Styles for the chart card */
+  }
+  
+  .chart {
+    /* Styles for the chart itself */
+  }
+  
+  .forecast-card {
+    /* Styles for the forecast card */
+  }
+  
+  .day-forecast {
+    /* Styles for individual day forecast */
+  }
+  
+  .day-temperature {
+    /* Styles for temperature of the day forecast */
+  }
+  
+  /* You will need to add actual styling to match the design */
+  
