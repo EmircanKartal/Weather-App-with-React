@@ -8,7 +8,6 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState([]);
 
-  // Function to update state with fetched weather and forecast
   const handleWeatherFetched = (data) => {
     setWeatherData(data.weather);
     setForecastData(data.forecast);
@@ -16,15 +15,13 @@ function App() {
 
   return (
     <div className="App">
-      
       <div className="weather-app-container">
-        {/* Pass the function to WeatherApp to get the data after fetch */}
         <WeatherApp onWeatherFetched={handleWeatherFetched} />
-
-        {/* Render the individual cards only if data is available */}
         {weatherData && <WeatherShowcaseCard weatherData={weatherData} />}
+        
+        {/* Render the WeatherForecastCard with forecastData */}
+
         {weatherData && <WeatherDetailsCard stats={weatherData.stats} />}
-        {forecastData.length > 0 && <WeatherForecastCard forecastData={forecastData} />}
       </div>
     </div>
   );

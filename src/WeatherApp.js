@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css'; // Your CSS file for styling
 import clearIcon from './assets/clear.png';
@@ -25,24 +25,58 @@ const SearchInput = ({ onSearch , inputFocused }) => {
   const [input, setInput] = useState('');
   const [isMoved, setIsMoved] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [suggestions, setSuggestions] = useState([]); // Define suggestions state here
+
+  useEffect(() => {
+    if (input.length > 2) {
+      const options = {
+        method: 'GET',
+        url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/adminDivisions',
+        params: { namePrefix: input },
+        headers: {
+          'X-RapidAPI-Key': '096b748cfcmshadccfebd9b5ca9ep1c705bjsna47879634333', // Replace with your RapidAPI Key
+          'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
+        }
+      };
+
+      axios.request(options).then((response) => {
+        console.log(response.data); // Log the response data to debug
+        setSuggestions(response.data.data); // Adjust based on API response
+      }).catch((error) => {
+        console.error('Error fetching autocomplete data:', error);
+      });
+      
+    }
+  }, [input]);
 
   const handleSearch = () => {
     onSearch(input);
     setInput(''); // Clear input after search if needed
+    setSuggestions([]); // Clear suggestions
   };
+
   const handleFocus = () => {
     setIsFocused(true);
     setIsMoved(true); // Set to true and never set it back to false
-
   };
 
   const handleBlur = () => {
     setIsFocused(false);
+    // Hide suggestions after a delay to allow click event to fire
+    setTimeout(() => {
+      setSuggestions([]);
+    }, 200);
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setInput(suggestion.name); // Adjust depending on suggestion object structure
+    setSuggestions([]);
+    // You may want to directly search when a suggestion is clicked
+    // onSearch(suggestion.name);
   };
   return (
-    <div
-          className={`search-container ${isMoved ? 'moved' : ''}`}
-        >      <input
+    <div className={`search-container ${isMoved ? 'moved' : ''}`}>
+      <input
         onFocus={handleFocus}
         onBlur={handleBlur}
         className="search-input"
@@ -52,10 +86,22 @@ const SearchInput = ({ onSearch , inputFocused }) => {
         onChange={(e) => setInput(e.target.value)}
         onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
       />
+      {suggestions.length > 0 && (
+        <ul className="autocomplete-suggestions">
+          {suggestions.map((suggestion, index) => (
+            <li
+              key={index}
+              onClick={() => handleSuggestionClick(suggestion)}
+              className="suggestion-item"
+            >
+              {suggestion.name} {/* Display suggestion label */}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
-
 
 const CurrentWeather = ({ weatherData }) => {
   return (
@@ -142,35 +188,35 @@ const WeatherShowcaseCard = ({ weatherData }) => {
     <div className="weather-showcase-card">
       <div className="weather-stat">
         <span>
-          <FontAwesomeIcon icon={faThermometerHalf} className="fa-icon" />
+          <FontAwesomeIcon icon={faThermometerHalf} className="fa-icon icon-space" />
           Thermal Sensation
         </span>
         <span>{weatherData.feels_like}°C</span>
       </div>
       <div className="weather-stat">
         <span>
-          <FontAwesomeIcon icon={faCloudRain} className="fa-icon" />
+          <FontAwesomeIcon icon={faCloudRain} className="fa-icon icon-space" />
           Probability of Rain
         </span>
         <span>{weatherData.rain_chance}%</span>
       </div>
       <div className="weather-stat">
         <span>
-          <FontAwesomeIcon icon={faWind} className="fa-icon" />
+          <FontAwesomeIcon icon={faWind} className="fa-icon icon-space" />
           Wind Speed
         </span>
         <span>{weatherData.windSpeed} km/h</span>
       </div>
       <div className="weather-stat">
         <span>
-          <FontAwesomeIcon icon={faTint} className="fa-icon" />
+          <FontAwesomeIcon icon={faTint} className="fa-icon icon-space" />
           Air Humidity
         </span>
         <span>{weatherData.humidity}%</span>
       </div>
       <div className="weather-stat">
         <span>
-          <FontAwesomeIcon icon={faSun} className="fa-icon" />
+          <FontAwesomeIcon icon={faSun} className="fa-icon icon-space" />
           UV Index
         </span>
         <span>{weatherData.uv_index}</span>
@@ -180,20 +226,7 @@ const WeatherShowcaseCard = ({ weatherData }) => {
 };
 
 
-// This component will render the weather forecast
-const WeatherForecastCard = ({ forecastData }) => {
-  return (
-    <div className="weather-forecast-card">
-      {forecastData.map(day => (
-        <div key={day.date} className="forecast-day">
-          <div className="day-name">{day.name}</div>
-          <div className="day-temp">{day.temp}°C</div>
-          {/* Additional details if any */}
-        </div>
-      ))}
-    </div>
-  );
-};
+
 
   // Updated WeatherDetails component for vertical card design
 const WeatherDetails = ({ weatherData }) => {
@@ -231,12 +264,17 @@ const CityWeatherCard = ({ weatherData }) => {
   );
 };
 
-const WeatherStatsCard = ({ stats }) => {
+// This component will render the weather forecast
+const WeatherForecastCard = ({ forecastData }) => {
   return (
-    <div className="weather-stats-card">
-      <WeatherStat statName="Humidity" statValue={stats.humidity} unit="%" />
-      <WeatherStat statName="Wind Speed" statValue={stats.windSpeed} unit="km/h" />
-      {/* Add other stats as needed */}
+    <div className="weather-forecast-card">
+      {forecastData.map((dayForecast, index) => (
+        <div key={index} className="forecast-day">
+          <div className="day-name">{dayForecast.day}</div>
+          <img src={dayForecast.icon} alt="Weather icon" />
+          <div className="day-temp">{dayForecast.tempMax}°C / {dayForecast.tempMin}°C</div>
+        </div>
+      ))}
     </div>
   );
 };
@@ -272,10 +310,22 @@ const WeatherApp = ({ onWeatherFetched }) => { // Correctly receive props
         uv_index: uvResponse.data.value,
       };
       setWeather(weatherData);
+      // Now, fetch the forecast data
+      const forecastResponse = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${APIKey}`);
+      // Process and set the forecast data appropriately
+      const processedForecastData = forecastResponse.data.list.filter((_, index) => index % 8 === 0).map(dayData => {
+        return {
+          day: new Date(dayData.dt_txt).toLocaleDateString('en', { weekday: 'short' }),
+          icon: iconMap[dayData.weather[0].icon] || defaultIcon,
+          tempMax: Math.round(dayData.main.temp_max),
+          tempMin: Math.round(dayData.main.temp_min)
+        };
+      });
 
+      setForecast(processedForecastData);
       // Assuming you want to lift state up or notify a parent component when new weather data is fetched
       if (onWeatherFetched) {
-        onWeatherFetched({ weather: weatherData, forecast: [] }); // This should be within a context where it makes sense
+        onWeatherFetched({ weather: weatherData, forecast: processedForecastData });
       }
 
       setError(false);
