@@ -32,7 +32,7 @@ Uygulama OpenWeather API kullanarak hava durumu bilgisini alır ve gerekli değe
 ## Adımlar
 ### Projeyi lokal bilgisayarınıza klonlayın:
 ```
-git clone https://github.com/your-username/Weather-App-with-React.git
+gh repo clone EmircanKartal/Weather-App-with-React
 cd weather
 ```
 ### Gerekli paketleri yükleyin:
