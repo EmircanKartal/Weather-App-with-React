@@ -15,7 +15,10 @@ Aşağıda uygulamaya ait ekran görüntüleri ve bir video yer almaktadır. Fot
 
 ### Video Gösterimi
 Uygulamanın çalışma şeklini gösteren videoyu aşağıda görebilirsiniz:
-https://github.com/EmircanKartal/Weather-App-with-React/assets/88210656/bf52b051-4714-4975-96a1-b6e88b694ac6
+
+
+https://github.com/EmircanKartal/Weather-App-with-React/assets/88210656/36694ab4-40ef-4724-8459-ea7ff4316ad0
+
 
 ## Uygulama Hakkında
 Uygulama OpenWeather API kullanarak hava durumu bilgisini alır ve gerekli değerleri 3 ayrı kart bilgisinde gösterir. Arama çubuğunda aratılan şehrin hava durmu, sıcaklığı, nemi, yağış olasılığı, hissedilen sıcaklığı, rüzgarın hızı, UV endeksi gibi değerlerin bilgisini verir.
