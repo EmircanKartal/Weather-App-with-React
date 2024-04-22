@@ -4,7 +4,7 @@
 Bu proje, geliştiricilere API kullanımı, asenkron veri işleme ve dinamik içerik yönetimi gibi konularda becerilerini sergileme fırsatı sunar. Kullanıcılar, uygulama aracılığıyla çeşitli şehirlerin güncel hava durumuna erişebilirler.
 
 ## Görseller
-Aşağıda uygulamaya ait ekran görüntüleri ve bir video yer almaktadır. Fotoğrafları yan yana görüntülemek için HTML ve CSS kullanılabilir.
+Aşağıda uygulamaya ait ekran görüntüleri ve bir video yer almaktadır. 
 
 
 <div style="display: flex; justify-content: space-between; align-items: center;">
