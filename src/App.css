@@ -1,37 +1,37 @@
-/* Assuming this CSS is in App.css */
 .search-container {
   display: flex;
   align-items: center;
-  background-color: #1e1e30; /* Adjust the color to match the theme */
-  padding: 0px;
-  border-radius: 10px;
+  background-color: #2e2e48; 
+  padding: 6px;
+  border-radius: 7px;
+  width: 100%;
+  max-width: 430px;
 }
 .App {
-  /* Set your desired background color */
-  background-color: #131319; /* This is the dark background color you requested earlier */
-  min-height: 100vh; /* This makes sure your app fills the whole vertical height */
+  background-color: #131319; 
+  min-height: 100vh; 
   display: flex;
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
+  justify-content: center; 
+  align-items: center; 
   padding: 20px;
+  width: 100vw; 
+  box-sizing: border-box;
 }
-
-/* Add more styles for the encapsulating div if necessary */
-
 
 .search-input {
   flex: 1;
   border-radius: 2px;
   padding: 10px;
   color: #fff;
-  background-color: #2e2e48; /* Darker background for the input */
+  background-color: #2e2e48; 
   border: none;
+  width: calc(100% - 20px);
 }
 
 .search-button {
   margin-left: 10px;
   padding: 10px 15px;
-  background-color: #4e4e70; /* Adjust the color for the button */
+  background-color: #4e4e70; 
   color: white;
   border-radius: 1px;
   cursor: pointer;
@@ -46,7 +46,6 @@
 
 .weather-icon img {
   animation: floating 3s ease-in-out infinite;
-  /* You would define a 'floating' animation for the cloud/sun/rain icon */
 }
 
 .weather-stats {
@@ -60,6 +59,16 @@
   overflow-x: auto;
 }
 
+@media (max-width: 800px) {
+  .search-container, .current-weather, .forecast-container, .weather-card {
+    width: 90%; /* Allows some margin from screen edges */
+    max-width: none; /* Removes the max-width setting */
+  }
+
+  .forecast-container::before, .current-weather::before {
+    background-size: contain; /* Ensures background image scales without repeating */
+  }
+}
 .forecast-container {
   background: #1E213A;
   border-radius: 25px;
@@ -72,8 +81,8 @@
   align-items: center;
   margin: 20px;
   margin-left: auto;
-  position: relative; /* Needed for absolute positioning of ::before */
-  overflow: hidden; /* Ensures the pseudo-element doesn't overflow the border-radius */
+  position: relative; 
+  overflow: hidden;
 }
 
 .forecast-container::before {
@@ -84,60 +93,48 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/src/assets/night.png'); /* Path to your night image */
-  background-size: cover; /* Cover ensures the image covers the entire element */
+  background-image: url('/src/assets/night.png'); 
+  background-size: cover; 
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.2; /* Adjust for desired opacity level */
-  border-radius: 25px; /* Match the border-radius of the container */
-  z-index: 0; /* Position it below the content */
+  opacity: 0.2; 
+  border-radius: 25px; 
+  z-index: 0; 
 }
 
 
 .forecast-day {
   text-align: center;
-  flex-shrink: 0; /* Prevents the days from shrinking */
-  margin-right: 20px; /* Space between each day */
+  flex-shrink: 0; 
+  margin-right: 20px; 
 }
 
 .forecast-day:last-child {
-  margin-right: 0; /* No margin on the last child */
+  margin-right: 0; 
 }
 
 .forecast-day .day {
-  font-size: 18px; /* Adjust font size as needed */
+  font-size: 18px; 
   color: #E7E7EB;
   margin-bottom: 10px;
 }
 
 .forecast-day img {
-  width: 50px; /* Adjust width as needed */
+  width: 50px; 
   margin-bottom: 10px;
 }
 
 .forecast-day .day-temp {
-  font-size: 16px; /* Adjust font size as needed */
+  font-size: 16px; 
   font-weight: bold;
   color: #E7E7EB;
 }
 
 .weather-temperature-min {
-  color: #A09FB1; /* Adjust color as needed */
-  font-size: 14px; /* Adjust font size as needed */
+  color: #A09FB1; 
+  font-size: 14px; 
 }
 
-/* For smaller screens, consider adjusting the layout */
-@media (max-width: 768px) {
-  .forecast-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .forecast-day {
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-}
 .weather-card {
   background: #1E213A;
   border-radius: 25px;
@@ -155,7 +152,7 @@
 }
 
 .weather-day img {
-  width: 50px; /* Set according to your preference */
+  width: 50px; 
   margin-bottom: 10px;
 }
 
@@ -170,18 +167,7 @@
   padding-top: 5px;
 }
 
-/* For smaller screens, you might want to adjust the styles */
-@media (max-width: 600px) {
-  .weather-card {
-    flex-direction: column;
-  }
-  
-  .weather-day {
-    margin-bottom: 20px;
-  }
-}
 
-/* Add this to your App.css */
 .vertical-card {
   display: flex;
   flex-direction: column;
@@ -190,7 +176,7 @@
   border-radius: 15px;
   box-shadow: 4px 2px 19px rgba(255, 255, 255, 0.4);
   padding: 60px;
-  width: 300px; /* Adjust width as needed */
+  width: 300px; 
   margin: auto;
   color: white;
 
@@ -207,14 +193,14 @@
 }
 
 .weather-icon img {
-  width: 50px; /* Adjust icon size as needed */
+  width: 50px; 
   height: 50px;
   margin-bottom: 10px;
   
 }
 
 .temperature {
-  font-size: 30px; /* Adjust font size as needed */
+  font-size: 30px;
   font-weight: bold;
   margin-bottom: 10px;
   color: white;
@@ -225,7 +211,7 @@
 }
 
 .weather-stats > div {
-  font-size: 16px; /* Adjust font size as needed */
+  font-size: 16px; 
   color: white;
   margin-bottom: 30px;
 }
@@ -237,7 +223,7 @@
 
 .search-top {
   position: absolute;
-  top: 10px; /* Adjust as needed */
+  top: 10px; 
 }
 
 .search-input {
@@ -248,7 +234,7 @@
 }
 
 .current-weather {
-  background: linear-gradient(to bottom right, #403b91 rgba(142, 55, 242, 0.262)58); /* Example gradient */
+  background: linear-gradient(to bottom right, #403b91 rgba(142, 55, 242, 0.262)58); 
   color: white;
   border-radius: 20px;
   padding: 20px;
@@ -257,7 +243,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative; /* For absolute positioning of elements */
+  position: relative;
 }
 .current-weather::before {
   content: '';
@@ -267,22 +253,21 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/src/assets/day.png'); /* Replace with the path to your night image */
-  background-size: 500px 500px; /* Adjust dimensions according to your card size */
+  background-image: url('/src/assets/day.png'); 
+  background-size: 500px 500px; 
   background-repeat: no-repeat;
   background-position: center;
 
-  opacity: 0.3; /* Adjust for desired opacity level */
+  opacity: 0.3; 
   border-radius: 20px;
   z-index: 0;
 }
 
-/* Add this to ensure the content of the card is above the background image */
 .current-weather > * {
   position: relative;
   z-index: 1;
 }
-.current-weather::after { /* Create the semi-transparent overlay */
+.current-weather::after { 
   content: '';
   position: absolute;
   top: 0;
@@ -297,26 +282,25 @@
 .location {
   position: relative;
   z-index: 2;
-  font-size: 24px; /* Adjust as needed */
+  font-size: 24px; 
   font-weight: bold;
 }
 
 .date {
   position: relative;
   z-index: 2;
-  font-size: 18px; /* Adjust as needed */
-  margin: 5px 0 20px; /* Adjust space between date and temperature */
+  font-size: 18px; 
+  margin: 5px 0 20px; 
 }
 
 .weather-icon img {
   width: 100px;
-  height: 100px; /* Adjust size as needed */
+  height: 100px; 
   z-index: 2;
-  /* You can remove the animation if it's not in the design */
 }
 
 .temperature {
-  font-size: 64px; /* Adjust size as needed */
+  font-size: 64px; 
   font-weight: bold;
   position: relative;
   z-index: 2;
@@ -325,33 +309,24 @@
 .min-max-temp {
   position: relative;
   z-index: 2;
-  font-size: 20px; /* Adjust as needed */
-  margin-bottom: 5px; /* Adjust as needed */
+  font-size: 20px; 
+  margin-bottom: 5px; 
 }
 
 .description {
   position: relative;
   z-index: 2;
-  font-size: 20px; /* Adjust as needed */
-  margin-bottom: 5px; /* Adjust as needed */
+  font-size: 20px;
+  margin-bottom: 5px; 
 }
 
 .weather-stats {
-  display: none; /* Hide if not part of the design */
+  display: none; 
 }
 
-/* Add any additional styling for responsive adjustments */
-@media (max-width: 768px) {
-  .current-weather {
-    padding: 15px;
-  }
-  /* Further responsive styling as necessary */
-}
 
-/* Style for weather stats */
 .weather-stat {
-  /* Different style as requested */
-  background-color: rgb(255, 255, 255); /* Semi-transparent white */
+  background-color: rgb(255, 255, 255); 
   margin: 1px 0;
   padding: 20px;
   border-radius: 0px;
@@ -365,26 +340,23 @@
   font-size: 1.2em;
 }
 
-/* Add this keyframes for the move-up animation */
 @keyframes move-up {
   0% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-50px); /* Adjust this value as needed */
+    transform: translateY(-50px); 
   }
   100% {
-    transform: translateY(-20px); /* This is the final position */
+    transform: translateY(-20px); 
   }
 }
 
 .search-container.moved {
-  /* Apply the animation */
   animation: move-up 0.7s forwards; 
 }
 
 .search-container.focused {
-  /* Start the move-up animation when the input is focused */
   animation: move-up 0.7s forwards;
 }
 
@@ -395,16 +367,16 @@
   padding: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   color: #dbdbe5;
-  margin-bottom: 20px; /* Space between cards */
+  margin-bottom: 20px; 
   
 }
 .weather-app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 1920px; /* Adjust as needed */
+  max-width: 1920px;
   margin: 0 auto;
-  gap: 20px; /* Adds space between the cards */
+  gap: 20px;
 }
 .weather-showcase-container,
 .weather-details-forecast-container {
@@ -412,15 +384,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px; /* Adds space between the cards */
+  gap: 20px; 
 }
-/* Make sure the individual card classes don't conflict and allow for proper stacking */
 .weather-showcase-card,
 .weather-details-card,
 .weather-forecast-card {
-  width: auto; /* Adjust the width as necessary, could be 100% or a fixed value */
-  margin-bottom: 20px; /* Space between cards */
-  /* ... other styles ... */
+  width: auto;
+  margin-bottom: 20px; 
 }
 @media (max-width: 1024px) {
   .weather-showcase-container,
@@ -443,8 +413,8 @@
   padding: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   color: #dbdbe5;
-  margin-bottom: 20px; /* Space between cards */
-  width: 400px; /* Or any width you prefer */
+  margin-bottom: 20px; 
+  width: 400px; 
   height: 200px;
 }
 .forecast-cards-container {
@@ -467,19 +437,16 @@
   padding: 10px;
 }
 
-/* Add further styling as needed */
-
 .weather-showcase-card,
 .weather-details-card {
   margin: -18px;
   width: 400px;
   margin-left: -8%;
-  flex-basis: calc(50% - 20px); /* Adjust the percentage based on desired width */
+  flex-basis: calc(50% - 20px); 
 }
 
 .weather-forecast-card {
-  flex-basis: calc(50% - 20px); /* Adjust the percentage based on desired width */
-  /* If the forecast card is taller and you want it to align at the top with the showcase card: */
+  flex-basis: calc(50% - 20px); 
   align-self: start;
 }
 
@@ -499,9 +466,9 @@
   justify-content: space-between;
   align-items: center;
   font-size: larger;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Divider line */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding: 10px 0;
-  background-color: #fff; /* Set the background color for each item */
+  background-color: #fff; 
 
 }
 
@@ -510,7 +477,6 @@
 }
 
 .weather-stat-icon {
-  /* Style your icon if necessary */
   margin-right: 10px;
 }
 
@@ -523,9 +489,8 @@
   display: inline-block;
 }
 
-/* Adjust icon sizes if necessary */
 .fa-icon {
-  width: 20px; /* Example width, adjust as necessary */
+  width: 20px; 
   text-align: center;
 }
 
@@ -538,7 +503,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  margin-bottom: 20px; /* Space between cards */
+  margin-bottom: 20px; 
 }
 
 .weather-forecast-card {
@@ -551,9 +516,8 @@
   overflow-x: auto;
 }
 
-/* Style for individual weather stat in the details card */
 .weather-stat {
-  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  background-color: rgba(255, 255, 255, 0.2); 
   border-radius: 5px;
   padding: 10px;
   display: flex;
@@ -561,23 +525,16 @@
   justify-content: space-between;
 }
 
-.weather-stat .stat-name {
-  /* styles for stat name */
-}
-
-.weather-stat .stat-value {
-  /* styles for stat value */
-}
 .search-card {
-  background-color: #131319; /* Adjust background color as needed */
+  background-color: #131319;
   border-radius: 15px;
   padding: 20px;
-  width: 100%; /* Or a fixed width, depending on your layout */
-  max-width: 400px; /* Adjust as needed */
+  width: 100%; 
+  max-width: 400px; 
   margin: auto;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: all 0.5s ease; /* For smooth transition */
-  position: relative; /* Required for absolute positioning inside */
+  transition: all 0.5s ease;
+  position: relative; 
 }
 
 .search-card.moved {
@@ -614,5 +571,6 @@
 }
 
 .icon-space {
-  margin-right: 16px; /* Adjust the space as needed */
+  margin-right: 16px;
 }
+
