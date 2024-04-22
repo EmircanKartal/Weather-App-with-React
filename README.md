@@ -25,7 +25,7 @@ Uygulama OpenWeather API kullanarak hava durumu bilgisini alır ve gerekli değe
 
 ## Kurulum
 
-## Gereksinimler
+### Gereksinimler
 - Node.js
 - npm veya yarn
 
